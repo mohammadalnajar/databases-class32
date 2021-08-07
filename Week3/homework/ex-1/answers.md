@@ -10,9 +10,10 @@
 
 2. entities could be extracted:
    1. member
-   2. dinner
-   3. venue
-   4. food
+   2. member dinner
+   3. dinner
+   4. venue
+   5. food
 
 
 3. 3NF tables:
@@ -24,6 +25,13 @@
     | 2         | John        | 21           | 6th ave     | D0001012  |
     | 3         | Max         | 9            | Peter str   | D0001002  |
 
+- member_dinner
+
+  | member_id | dinner_id |
+  | --------- | --------- |
+  | 1         | D0001001  |
+  | 2         | D0001012  |
+  | 3         | D0001002  |
 
 -  dinner_table
    
