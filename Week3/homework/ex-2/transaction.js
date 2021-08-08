@@ -17,8 +17,8 @@ const execQuery = util.promisify(connection.query.bind(connection));
   try {
     await Promise.all([
       execQuery(database.use_database),
-      execQuery(transactionStart),
       execQuery(autoCommit('off')),
+      execQuery(transactionStart),
     ]);
     console.log('Transaction started ...');
     await Promise.all([
@@ -27,7 +27,7 @@ const execQuery = util.promisify(connection.query.bind(connection));
     ]);
     const transactionsLog = await execQuery('SELECT * FROM account_changes;');
     console.log('transactions registered ...');
-    console.log(transactionsLog);
+    console.log(transactionsLog[transactionsLog.length - 1]);
     await Promise.all([
       execQuery(account.update(`-2000`, 1)),
       execQuery(account.update(`+2000`, 2)),
@@ -35,11 +35,13 @@ const execQuery = util.promisify(connection.query.bind(connection));
     const transactionsLog2 = await execQuery('SELECT * FROM account;');
     console.log('transactions done ...');
     console.log(transactionsLog2);
-    await execQuery(transactionEnd('COMMIT;'));
+    await execQuery(transactionEnd('COMMIT'));
     console.log('Transaction is committed ...');
     connection.end();
   } catch (err) {
     console.log(err);
+    await execQuery(transactionEnd('ROLLBACK'));
+    console.log('Transaction is stopped ...');
     connection.end();
   }
 })();
