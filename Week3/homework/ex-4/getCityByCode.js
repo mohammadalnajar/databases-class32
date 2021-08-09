@@ -5,7 +5,7 @@ const url = process.env.MONGODB_URL;
 const client = new MongoClient(url);
 
 const dbName = 'hyf';
-async function getCityByName() {
+async function getCityByCode() {
   try {
     await client.connect();
     console.log('Connected successfully to server');
@@ -19,4 +19,4 @@ async function getCityByName() {
     client.close();
   }
 }
-getCityByName();
+getCityByCode();

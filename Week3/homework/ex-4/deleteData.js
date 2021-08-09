@@ -5,7 +5,7 @@ const url = process.env.MONGODB_URL;
 const client = new MongoClient(url);
 
 const dbName = 'hyf';
-async function connectMongoDB() {
+async function deleteData() {
   try {
     await client.connect();
     console.log('Connected successfully to server');
@@ -22,4 +22,4 @@ async function connectMongoDB() {
     client.close();
   }
 }
-connectMongoDB();
+deleteData();
