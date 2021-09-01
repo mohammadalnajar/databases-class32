@@ -10,10 +10,9 @@
 
 2. entities could be extracted:
    1. member
-   2. member dinner
-   3. dinner
-   4. venue
-   5. food
+   2. dinner
+   3. venue
+   4. food
 
 
 3. 3NF tables:
@@ -36,12 +35,26 @@
 -  dinner_table
    
 
-    | dinner_id | dinner_date | venue_id | food_id |
-    | --------- | ----------- | -------- | ------- |
-    | D0001001  | 2021-10-10  | V100     | C1      |
-    | D0001012  | 2021-09-11  | V200     | S2      |
-    | D0001002  | 2021-08-11  | V300     | F4      |
-    | D0001001  | 2021-10-10  | V100     | S1      |
+    | dinner_id | dinner_date | venue_id |
+    | --------- | ----------- | -------- |
+    | D0001001  | 2021-10-10  | V100     |
+    | D0001012  | 2021-09-11  | V200     |
+    | D0001002  | 2021-08-11  | V300     |
+    | D0001001  | 2021-10-10  | V100     |
+
+- dinner_food_table
+
+  | dinner_id | food_id |
+  | --------- | ------- |
+  | D0001001  | C1      |
+  | D0001001  | S1      |
+  | D0001012  | C1      |
+  | D0001012  | S2      |
+  | D0001012  | T1      |
+  | D0001002  | T1      |
+  | D0001001  | C1      |
+  | D0001001  | S2      |
+  | D0001001  | S1      |
 
 - Venue_table
   

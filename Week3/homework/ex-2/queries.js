@@ -10,14 +10,14 @@ module.exports = {
     account: `CREATE TABLE IF NOT EXISTS 
         account(
             account_number INT AUTO_INCREMENT,
-            balance INT,
+            balance DECIMAL(13,2),
             PRIMARY KEY(account_number)
         );`,
     account_changes: `CREATE TABLE IF NOT EXISTS 
         account_changes(
             change_number INT AUTO_INCREMENT,
             account_number INT,
-            amount INT,
+            amount DECIMAL(13,2),
             changed_date DATETIME,
             remark VARCHAR(255),
             PRIMARY KEY(change_number),
